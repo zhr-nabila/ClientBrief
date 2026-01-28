@@ -1,0 +1,386 @@
+:root {
+    --bg: #050810;
+    --text: white;
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+.light-mode {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --card: rgba(255, 255, 255, 0.8);
+    --border: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: 0.4s;
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(15px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at top right, #1e293b, var(--bg));
+}
+
+.step-content,
+#form-container {
+    display: none;
+}
+
+.active {
+    display: block !important;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animasi Modal */
+#imageModal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-6px);
+    }
+    50% {
+        transform: translateX(6px);
+    }
+    75% {
+        transform: translateX(-6px);
+    }
+}
+
+.error-shake {
+    animation: shake 0.3s ease-in-out;
+    border-color: #ef4444 !important;
+}
+
+/* Input fields: Consistent colors, handle filled state and autofill */
+.input-field {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #2563eb !important;
+}
+
+/* Fix for filled input: Prevent white background after input */
+.input-field:not(:placeholder-shown) {
+    background: rgba(120, 120, 120, 0.1);
+    color: var(--text);
+}
+
+/* Fix Chrome autofill for email and other fields */
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover,
+.input-field:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--card) inset;
+    -webkit-text-fill-color: var(--text);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Custom select dropdown styling */
+.custom-select {
+    appearance: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: inherit;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.custom-select:focus {
+    border-color: #2563eb !important;
+}
+
+/* Intl-tel-input styling for country dropdown */
+.iti {
+    width: 100%;
+}
+
+.iti__country-list {
+    color: var(--text);
+    border-radius: 1rem;
+    padding: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    backdrop-filter: blur(10px);
+}
+
+.iti__country-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.iti__country-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.light-mode .iti__country-list {
+    background: var(--card);
+    color: var(--text);
+}
+
+/* ============================================
+   INTEL-TEL-INPUT COUNTRY DROPDOWN - FIX LEBAR
+   ============================================ */
+
+/* CONTAINER DROPDOWN - Pastikan lebar cukup */
+.iti__dropdown-content {
+    min-width: 350px !important;
+    width: 350px !important;
+    max-width: 350px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 8px !important;
+    left: 0 !important;
+    transform: none !important;
+    position: absolute !important;
+    z-index: 9999 !important;
+}
+
+/* COUNTRY LIST - Lebarkan box utama */
+.iti__country-list {
+    min-width: 350px !important;
+    width: 350px !important;
+    max-width: 350px !important;
+    background: var(--card) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+    padding: 12px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+    max-height: 320px !important;
+    overflow-y: auto !important;
+}
+
+/* SEARCH BOX - Lebarkan search */
+.iti__search-input {
+    width: 100% !important;
+    min-width: 320px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    margin-bottom: 12px !important;
+    font-size: 14px !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+}
+
+/* COUNTRY ITEM - Lebarkan setiap item */
+.iti__country {
+    min-width: 320px !important;
+    width: 320px !important;
+    padding: 10px 16px !important;
+    margin: 2px 0 !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    transition: background-color 0.2s !important;
+    box-sizing: border-box !important;
+}
+
+/* COUNTRY NAME - Lebarkan nama negara */
+.iti__country-name {
+    flex: 1 !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-right: 12px !important;
+    font-size: 14px !important;
+}
+
+/* DIAL CODE - Rata kanan */
+.iti__dial-code {
+    min-width: 70px !important;
+    text-align: right !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    opacity: 0.8 !important;
+}
+
+/* FLAG BOX - Pastikan cukup lebar untuk flag */
+.iti__flag-box {
+    min-width: 24px !important;
+    width: 24px !important;
+    margin-right: 12px !important;
+}
+
+/* FLAG - Ukuran konsisten */
+.iti__flag {
+    width: 20px !important;
+    height: 15px !important;
+    box-shadow: none !important;
+}
+
+/* HIGHLIGHT STATE */
+.iti__country.iti__highlight {
+    background-color: #2563eb !important;
+    color: white !important;
+}
+
+.iti__country.iti__highlight .iti__dial-code {
+    color: white !important;
+    opacity: 1 !important;
+}
+
+/* DIVIDER - Sesuaikan lebar */
+.iti__divider {
+    border-bottom: 1px solid var(--border) !important;
+    margin: 8px 16px !important;
+    padding: 0 !important;
+    width: calc(100% - 32px) !important;
+}
+
+/* ============================================
+   RESPONSIVE - Tetap lebar di mobile
+   ============================================ */
+@media (max-width: 640px) {
+    .iti__dropdown-content {
+        min-width: 90vw !important;
+        width: 90vw !important;
+        max-width: 90vw !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    
+    .iti__country-list {
+        min-width: 85vw !important;
+        width: 85vw !important;
+        max-width: 85vw !important;
+    }
+    
+    .iti__country {
+        min-width: calc(85vw - 32px) !important;
+        width: calc(85vw - 32px) !important;
+    }
+    
+    .iti__country-name {
+        min-width: calc(85vw - 150px) !important;
+        max-width: calc(85vw - 150px) !important;
+    }
+    
+    .iti__search-input {
+        min-width: calc(85vw - 24px) !important;
+    }
+}
+
+/* ============================================
+   LIGHT MODE FIX
+   ============================================ */
+.light-mode .iti__country-list {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .iti__search-input {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #333 !important;
+}
+
+.light-mode .iti__country:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ============================================
+   Z-INDEX & POSITIONING FIX
+   ============================================ */
+.iti {
+    width: 100% !important;
+}
+
+.iti__dropdown-content {
+    z-index: 99999 !important;
+}
+
+/* Pastikan dropdown muncul di atas semua elemen */
+body > .iti__dropdown-content {
+    position: fixed !important;
+    z-index: 999999 !important;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+.iti__country-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.iti__country-list::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+}
+
+.iti__country-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.iti__country-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

@@ -1,0 +1,55 @@
+:root {
+    --primary: #3b82f6;
+    --dark-bg: #050810;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--dark-bg);
+    color: white;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+}
+
+/* Form Transitions */
+.step { display: none; }
+.step.active { 
+    display: block; 
+    animation: slideUp 0.5s ease-out; 
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem !important; }
+    .glass-card { padding: 1.5rem !important; margin: 10px; }
+    .nav-container { padding: 10px 20px !important; }
+}
+
+/* Form Helper */
+input, textarea, select {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus { border-color: var(--primary); background: rgba(255,255,255,0.08); }

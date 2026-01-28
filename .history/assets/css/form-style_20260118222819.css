@@ -1,0 +1,814 @@
+/* ===== FORM STYLES ===== */
+.form-container {
+    max-width: 32rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+}
+
+.progress-bar {
+    height: 0.25rem;
+    width: 30%;
+    border-radius: 9999px;
+    transition: all 0.5s ease;
+}
+
+.glass-form {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2.5rem;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+    .glass-form {
+        padding: 3rem;
+    }
+}
+
+.step-content {
+    display: none;
+}
+
+.step-content.active {
+    display: block;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-title {
+    font-size: 1.875rem;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    margin-bottom: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(120, 120, 120, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: inherit;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #2563eb !important;
+}
+
+.form-input::placeholder {
+    color: rgba(156, 163, 175, 0.7);
+}
+
+/* Light mode adjustments */
+.light-mode .form-input {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+}
+
+.form-textarea {
+    resize: none;
+    min-height: 8rem;
+}
+
+.upload-area {
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: #2563eb;
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-icon {
+    width: 2rem;
+    height: 2rem;
+    color: #3b82f6;
+    margin: 0 auto 0.5rem;
+}
+
+.upload-text {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-back {
+    width: 33.333%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(156, 163, 175, 1);
+    font-weight: 700;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-next {
+    width: 66.667%;
+    background: #2563eb;
+    color: white;
+    font-weight: 900;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-next:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.btn-submit {
+    width: 66.667%;
+    background: white;
+    color: black;
+    font-weight: 900;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-submit:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Telp input khusus */
+.tel-input-container {
+    position: relative;
+}
+
+.tel-input-container .iti {
+    width: 100%;
+}
+
+.tel-input-container .iti__country-list {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+}
+
+.light-mode .tel-input-container .iti__country-list {
+    background: white;
+    color: #000;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-6px); }
+}
+
+.error-shake {
+    animation: shake 0.3s ease-in-out;
+    border-color: #ef4444 !important;
+}
+
+/* ===== DROPDOWN STYLES ===== */
+
+/* Style untuk dropdown layanan */
+select.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 3rem;
+    cursor: pointer;
+}
+
+/* Style untuk dropdown kode negara intl-tel-input */
+.iti__dropdown-content {
+    background: var(--bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1rem !important;
+    margin-top: 0.25rem !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+.iti__country {
+    padding: 0.75rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: all 0.2s ease !important;
+}
+
+.iti__country:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.iti__country-name, .iti__dial-code {
+    color: var(--text) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.iti__flag-box {
+    margin-right: 0.75rem !important;
+}
+
+.iti__country.iti__highlight {
+    background: rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Search box di dropdown kode negara */
+.iti__search-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0.75rem !important;
+    color: var(--text) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    padding: 0.75rem 1rem !important;
+    margin: 0.5rem !important;
+    width: calc(100% - 1rem) !important;
+    outline: none !important;
+}
+
+.iti__search-input:focus {
+    border-color: #2563eb !important;
+}
+
+.iti__search-label {
+    display: none !important;
+}
+
+/* Light mode adjustments */
+.light-mode select.form-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.light-mode .iti__dropdown-content {
+    background: white !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .iti__country-name, 
+.light-mode .iti__dial-code {
+    color: #0f172a !important;
+}
+
+.light-mode .iti__country:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode .iti__search-input {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #0f172a !important;
+}
+
+/* Custom select options */
+select.form-input option {
+    background: var(--bg);
+    color: var(--text);
+    padding: 1rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.light-mode select.form-input option {
+    background: white;
+    color: #0f172a;
+}
+
+/* Style untuk container intl-tel-input */
+.tel-input-container .iti {
+    width: 100%;
+}
+
+.tel-input-container .iti__selected-flag {
+    background: transparent !important;
+    padding: 0 1rem !important;
+    border-radius: 1rem 0 0 1rem !important;
+}
+
+.tel-input-container .iti__selected-flag:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.tel-input-container .iti__arrow {
+    border-top-color: #6b7280 !important;
+    margin-left: 0.25rem !important;
+}
+
+.tel-input-container .iti__arrow--up {
+    border-bottom-color: #6b7280 !important;
+}
+
+.tel-input-container #in-telp {
+    padding-left: 5rem !important;
+    border-radius: 1rem !important;
+}
+
+/* Focus state untuk tel input */
+.tel-input-container .iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Service option styles */
+.service-option {
+    display: block;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.service-option::before {
+    content: "•";
+    color: #2563eb;
+    margin-right: 0.75rem;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .iti__dropdown-content {
+        max-width: 100vw !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .tel-input-container #in-telp {
+        padding-left: 4.5rem !important;
+    }
+    
+    .tel-input-container .iti__selected-flag {
+        padding: 0 0.75rem !important;
+    }
+    
+    select.form-input {
+        font-size: 14px;
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+    }
+}
+
+/* Scrollbar styling untuk dropdown */
+.iti__dropdown-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.iti__dropdown-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.iti__dropdown-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.iti__dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* File upload indicator */
+.file-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    color: #60a5fa;
+}
+
+.file-indicator i {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+/* ===== INPUT FIELD FIXES ===== */
+
+/* Fix untuk input yang sudah diisi */
+.form-input:not(:placeholder-shown) {
+    background: rgba(120, 120, 120, 0.08) !important;
+    color: var(--text) !important;
+}
+
+/* Light mode fix */
+.light-mode .form-input:not(:placeholder-shown) {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+}
+
+/* Fix khusus untuk tel input */
+.tel-input-container .iti__tel-input:not(:placeholder-shown) {
+    background: rgba(120, 120, 120, 0.08) !important;
+    color: var(--text) !important;
+}
+
+.light-mode .tel-input-container .iti__tel-input:not(:placeholder-shown) {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+}
+
+/* Fix untuk textarea */
+textarea.form-input:not(:placeholder-shown) {
+    background: rgba(120, 120, 120, 0.08) !important;
+    color: var(--text) !important;
+}
+
+.light-mode textarea.form-input:not(:placeholder-shown) {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+}
+
+/* Fix untuk select yang sudah dipilih */
+select.form-input:valid:not([value=""]) {
+    background: rgba(120, 120, 120, 0.08) !important;
+    color: var(--text) !important;
+}
+
+.light-mode select.form-input:valid:not([value=""]) {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+}
+
+/* Border color untuk input yang aktif/diisi */
+.form-input:focus:not(:placeholder-shown) {
+    border-color: #2563eb !important;
+    background: rgba(37, 99, 235, 0.05) !important;
+}
+
+/* Styling untuk label input yang sudah diisi */
+.form-group.filled label {
+    color: #60a5fa !important;
+}
+
+/* Animation untuk input transition */
+.form-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Placeholder styling */
+.form-input::placeholder {
+    color: rgba(156, 163, 175, 0.7);
+    transition: color 0.3s ease;
+}
+
+.form-input:focus::placeholder {
+    color: rgba(156, 163, 175, 0.4);
+}
+
+/* Light mode placeholder */
+.light-mode .form-input::placeholder {
+    color: rgba(107, 114, 128, 0.7);
+}
+
+.light-mode .form-input:focus::placeholder {
+    color: rgba(107, 114, 128, 0.4);
+}
+
+/* ===== INPUT STATES ===== */
+
+/* Filled state */
+.form-input.filled {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    background: rgba(120, 120, 120, 0.1) !important;
+}
+
+.light-mode .form-input.filled {
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    background: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Focused state */
+.form-input.focused {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Label states */
+.form-group.filled label {
+    color: #60a5fa !important;
+}
+
+.form-group.focused label {
+    color: #2563eb !important;
+    font-weight: 700;
+}
+
+/* Special styling untuk tel input yang diisi */
+.tel-input-container .iti__tel-input.filled {
+    background: rgba(120, 120, 120, 0.1) !important;
+}
+
+.light-mode .tel-input-container .iti__tel-input.filled {
+    background: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Text color tetap konsisten */
+.form-input,
+.tel-input-container .iti__tel-input,
+textarea.form-input {
+    color: var(--text) !important;
+}
+
+.light-mode .form-input,
+.light-mode .tel-input-container .iti__tel-input,
+.light-mode textarea.form-input {
+    color: #0f172a !important;
+}
+
+/* Pastikan warna text tetap hitam/putih tergantung tema */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text) !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(120, 120, 120, 0.1) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.light-mode input:-webkit-autofill,
+.light-mode input:-webkit-autofill:hover, 
+.light-mode input:-webkit-autofill:focus,
+.light-mode textarea:-webkit-autofill,
+.light-mode textarea:-webkit-autofill:hover,
+.light-mode textarea:-webkit-autofill:focus,
+.light-mode select:-webkit-autofill,
+.light-mode select:-webkit-autofill:hover,
+.light-mode select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #0f172a !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.06) inset !important;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Custom scrollbar untuk dropdown */
+.iti__dropdown-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.iti__dropdown-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.iti__dropdown-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.iti__dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.light-mode .iti__dropdown-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .iti__dropdown-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .iti__dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== INPUT FIELD FIXES ===== */
+/* Fix untuk semua input field warna */
+.form-input {
+    color: var(--text) !important;
+    background-color: rgba(120, 120, 120, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.light-mode .form-input {
+    color: #0f172a !important;
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix khusus untuk email input bug */
+#in-email {
+    color: var(--text) !important;
+    background-color: rgba(120, 120, 120, 0.05) !important;
+}
+
+.light-mode #in-email {
+    color: #0f172a !important;
+    background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Input yang sudah diisi - IMPORTANT untuk override */
+.form-input:not(:placeholder-shown),
+.form-input.filled,
+#in-email:not(:placeholder-shown),
+#in-email.filled {
+    color: var(--text) !important;
+    background-color: rgba(120, 120, 120, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.light-mode .form-input:not(:placeholder-shown),
+.light-mode .form-input.filled,
+.light-mode #in-email:not(:placeholder-shown),
+.light-mode #in-email.filled {
+    color: #0f172a !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Fix untuk autofill */
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--text) !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(120, 120, 120, 0.05) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.light-mode input:-webkit-autofill {
+    -webkit-text-fill-color: #0f172a !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.03) inset !important;
+}
+
+/* ===== BUTTON ALIGNMENT ===== */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.btn-back {
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(156, 163, 175, 1);
+    font-weight: 700;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 120px;
+}
+
+.btn-next, .btn-submit {
+    flex: 2;
+    background: #2563eb;
+    color: white;
+    font-weight: 700;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.btn-submit {
+    background: white;
+    color: black;
+}
+
+.btn-submit:hover {
+    background: #2563eb;
+    color: white;
+}
+
+/* ===== TEXTAREA SIMPLIFICATION ===== */
+#in-pesan {
+    min-height: 120px;
+    resize: vertical;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.5;
+}
+
+#in-pesan::placeholder {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: rgba(156, 163, 175, 0.8);
+}
+
+.light-mode #in-pesan::placeholder {
+    color: rgba(107, 114, 128, 0.8);
+}
+
+/* ===== TEL INPUT NUMERIC ONLY ===== */
+#in-telp {
+    /* Pastikan hanya angka yang bisa dimasukkan */
+    inputmode: numeric;
+}
+
+/* Style untuk nomor yang sudah diinput */
+.tel-input-container .iti__tel-input {
+    letter-spacing: 0.5px;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace, sans-serif;
+}
+
+/* Responsive button fix */
+@media (max-width: 640px) {
+    .button-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .btn-back,
+    .btn-next,
+    .btn-submit {
+        width: 100% !important;
+        flex: none !important;
+        padding: 1rem !important;
+    }
+}

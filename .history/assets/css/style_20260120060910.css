@@ -1,0 +1,261 @@
+:root {
+    --bg: #050810;
+    --text: white;
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+.light-mode {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --card: rgba(255, 255, 255, 0.8);
+    --border: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: 0.4s;
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(15px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at top right, #1e293b, var(--bg));
+}
+
+.step-content,
+#form-container {
+    display: none;
+}
+
+.active {
+    display: block !important;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animasi Modal */
+#imageModal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-6px);
+    }
+    50% {
+        transform: translateX(6px);
+    }
+    75% {
+        transform: translateX(-6px);
+    }
+}
+
+.error-shake {
+    animation: shake 0.3s ease-in-out;
+    border-color: #ef4444 !important;
+}
+
+/* Input fields: Consistent colors, handle filled state and autofill */
+.input-field {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #2563eb !important;
+}
+
+/* Fix for filled input: Prevent white background after input */
+.input-field:not(:placeholder-shown) {
+    background: rgba(120, 120, 120, 0.1);
+    color: var(--text);
+}
+
+/* Fix Chrome autofill for email and other fields */
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover,
+.input-field:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--card) inset;
+    -webkit-text-fill-color: var(--text);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Custom select dropdown styling */
+.custom-select {
+    appearance: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: inherit;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.custom-select:focus {
+    border-color: #2563eb !important;
+}
+
+/* Intl-tel-input styling for country dropdown */
+.iti {
+    width: 100%;
+}
+
+.iti__country-list {
+    color: var(--text);
+    border-radius: 1rem;
+    padding: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    backdrop-filter: blur(10px);
+}
+
+.iti__country-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.iti__country-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.light-mode .iti__country-list {
+    background: var(--card);
+    color: var(--text);
+}
+
+/* ============================================
+   INTL-TEL-INPUT — FIX WITH FLAGS (SAFE)
+   ============================================ */
+
+.iti__dropdown-content {
+    width: 380px !important;
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 18px !important;
+    backdrop-filter: blur(25px);
+    padding: 14px !important;
+    margin-top: 8px !important;
+    z-index: 99999 !important;
+}
+
+/* list */
+.iti__country-list {
+    background: transparent !important;
+    max-height: 340px !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+}
+
+/* search */
+.iti__search-input {
+    width: 100% !important;
+    padding: 14px 18px !important;
+    border-radius: 14px !important;
+    border: 1px solid var(--border) !important;
+    background: rgba(255,255,255,0.08) !important;
+    color: var(--text) !important;
+    margin-bottom: 14px !important;
+}
+
+/* country row */
+.iti__country {
+    padding: 12px 14px !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.iti__country:hover {
+    background: rgba(255,255,255,0.08) !important;
+}
+
+/* 🚨 FLAG — JANGAN DIUBAH LOGIKANYA */
+.iti__flag-box {
+    margin-right: 14px !important;
+}
+
+/* 🚨 PALING PENTING */
+.iti__flag {
+    width: 20px !important;
+    height: 15px !important;
+
+    /* WAJIB DEFAULT */
+    background-size: auto !important;
+    background-position: 0 0 !important;
+    background-repeat: no-repeat !important;
+}
+
+/* name */
+.iti__country-name {
+    flex: 1 !important;
+    font-size: 15px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* dial code */
+.iti__dial-code {
+    font-weight: 600 !important;
+    opacity: 0.85 !important;
+}
+
+/* active */
+.iti__country.iti__highlight {
+    background: linear-gradient(135deg,#2563eb,#1d4ed8) !important;
+    color: white !important;
+}

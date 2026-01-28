@@ -1,0 +1,27 @@
+/* Font modern */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Sembunyikan step form secara default */
+.step {
+    display: none;
+}
+
+/* Tampilkan step yang sedang aktif */
+.step.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animasi halus saat pindah step */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efek hover pada pilihan jasa */
+.service-option:hover {
+    border-color: #2563eb;
+    background-color: #f8fafc;
+}

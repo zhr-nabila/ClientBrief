@@ -1,0 +1,140 @@
+/* Semua CSS dari semua file */
+
+/* Dari edit_projek.php */
+<style>
+    body { background-color: #050810; font-family: 'Plus Jakarta Sans', sans-serif; color: white; }
+    .glass-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); }
+</style>
+
+/* Dari index.php (admin) */
+<style>
+    body { background-color: #050810; font-family: 'Plus Jakarta Sans', sans-serif; color: white; }
+    .glass-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Animasi Modal */
+    #imageModal.active { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+
+/* Dari login.php */
+<style>body { background-color: #050810; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+
+/* Dari assets/css/style.css */
+:root {
+    --bg: #050810;
+    --accent: #3b82f6;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+/* hide scrollbar */
+html {
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: #fff;
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--accent);
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* light mode */
+body.light-theme {
+    --bg: #fff;
+    --glass: rgba(0, 0, 0, 0.05);
+    --border: rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+}
+
+body.light-theme input,
+body.light-theme textarea {
+    background: #f4f4f4;
+    color: #000;
+}
+
+body.light-theme .glass-card {
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* Dari index.php (utama) */
+:root { --bg: #050810; --text: white; --card: rgba(255, 255, 255, 0.02); --border: rgba(255, 255, 255, 0.08); }
+.light-mode { --bg: #f8fafc; --text: #0f172a; --card: rgba(255, 255, 255, 0.8); --border: rgba(0, 0, 0, 0.05); }
+body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; transition: 0.4s; overflow-x: hidden; }
+.glass-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(15px); }
+.hero-gradient { background: radial-gradient(circle at top right, #1e293b, var(--bg)); }
+.step-content, #form-container { display: none; }
+.active { display: block !important; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-6px); } }
+.error-shake { animation: shake 0.3s ease-in-out; border-color: #ef4444 !important; }
+input, select, textarea { width: 100%; background: rgba(120, 120, 120, 0.05); border: 1px solid var(--border); border-radius: 1rem; padding: 1rem; color: inherit; outline: none; transition: 0.3s; }
+input:focus { border-color: #2563eb !important; }
+
+.iti { width: 100%; }
+.iti__country-list { color: #000; border-radius: 1rem; padding: 10px; }
+.light-mode .iti__country-list { background: #fff; }

@@ -1,0 +1,111 @@
+:root {
+    /* Background diambil dari warna ungu gelap di bagian bawah gambar */
+    --bg: #4a042e; 
+    /* Warna aksen utama menggunakan pink cerah (Bubble Fusion) */
+    --accent: #ff2d75; 
+    /* Glassmorphism dengan nuansa pink sangat tipis */
+    --glass: rgba(255, 45, 117, 0.05); 
+    --border: rgba(255, 255, 255, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Menambahkan gradien halus agar persis seperti background di gambar */
+    background: radial-gradient(circle at top right, #c2185b, var(--bg));
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Sembunyikan scrollbar */
+html {
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    /* Memberikan sedikit efek glow pink lembut */
+    box-shadow: 0 8px 32px 0 rgba(255, 45, 117, 0.1);
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+/* Focus ganti ke warna Magenta cerah */
+input:focus,
+textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(255, 45, 117, 0.3);
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Light Mode (Nuansa Pink Soft) */
+body.light-theme {
+    --bg: #fff1f6;
+    --glass: rgba(255, 255, 255, 0.7);
+    --border: rgba(255, 45, 117, 0.1);
+    color: #4a042e;
+}
+
+body.light-theme input,
+body.light-theme textarea {
+    background: #ffffff;
+    border: 1px solid rgba(255, 45, 117, 0.2);
+    color: #000;
+}
+
+body.light-theme .glass-card {
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(255, 45, 117, 0.1);
+}
+
+.switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}

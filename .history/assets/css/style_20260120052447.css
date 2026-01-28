@@ -1,0 +1,370 @@
+:root {
+    --bg: #050810;
+    --text: white;
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+.light-mode {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --card: rgba(255, 255, 255, 0.8);
+    --border: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: 0.4s;
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(15px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at top right, #1e293b, var(--bg));
+}
+
+.step-content,
+#form-container {
+    display: none;
+}
+
+.active {
+    display: block !important;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animasi Modal */
+#imageModal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-6px);
+    }
+    50% {
+        transform: translateX(6px);
+    }
+    75% {
+        transform: translateX(-6px);
+    }
+}
+
+.error-shake {
+    animation: shake 0.3s ease-in-out;
+    border-color: #ef4444 !important;
+}
+
+/* Input fields: Consistent colors, handle filled state and autofill */
+.input-field {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #2563eb !important;
+}
+
+/* Fix for filled input: Prevent white background after input */
+.input-field:not(:placeholder-shown) {
+    background: rgba(120, 120, 120, 0.1);
+    color: var(--text);
+}
+
+/* Fix Chrome autofill for email and other fields */
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover,
+.input-field:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--card) inset;
+    -webkit-text-fill-color: var(--text);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Custom select dropdown styling */
+.custom-select {
+    appearance: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: inherit;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.custom-select:focus {
+    border-color: #2563eb !important;
+}
+
+/* Intl-tel-input styling for country dropdown */
+.iti {
+    width: 100%;
+}
+
+.iti__country-list {
+    color: var(--text);
+    border-radius: 1rem;
+    padding: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    backdrop-filter: blur(10px);
+}
+
+.iti__country-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.iti__country-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.light-mode .iti__country-list {
+    background: var(--card);
+    color: var(--text);
+}
+
+/* ============================================
+   INTEL-TEL-INPUT COUNTRY DROPDOWN WIDTH FIX
+   ============================================ */
+
+/* COUNTRY DROPDOWN - LEBARKAN BOX */
+.iti__dropdown-content {
+    min-width: 400px !important; /* Minimum width */
+    width: auto !important;
+    max-width: 500px !important;
+    left: 0 !important;
+    transform: none !important;
+}
+
+/* Country list container - LEBAR */
+.iti__country-list {
+    min-width: 350px !important;
+    width: 100% !important;
+    max-width: 450px !important;
+    background: var(--card) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 1rem !important;
+    padding: 0.75rem !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+    max-height: 350px !important;
+}
+
+/* Individual country items - Lebarkan isinya */
+.iti__country {
+    padding: 0.75rem 1.25rem !important;
+    min-width: 300px !important;
+    justify-content: space-between !important;
+}
+
+/* Country name container */
+.iti__country-name {
+    flex-grow: 1 !important;
+    min-width: 200px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-right: 1rem !important;
+}
+
+/* Dial code */
+.iti__dial-code {
+    min-width: 60px !important;
+    text-align: right !important;
+    font-weight: 600 !important;
+    opacity: 0.9 !important;
+}
+
+/* Search box - Lebarkan */
+.iti__search-input {
+    width: 100% !important;
+    min-width: 300px !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.875rem !important;
+}
+
+/* Flag spacing */
+.iti__flag-box {
+    min-width: 30px !important;
+    margin-right: 0.875rem !important;
+}
+
+/* Untuk dropdown yang ke bawah */
+.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Positioning fix untuk dropdown yang terlalu ke kiri */
+.iti--allow-dropdown .iti__flag-container:has(+ .iti__dropdown-content) {
+    position: relative;
+}
+
+/* Dropdown position adjustment */
+.iti--container {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    margin-top: 0.5rem !important;
+}
+
+/* ============================================
+   RESPONSIVE FIX - Tetap lebar di mobile
+   ============================================ */
+
+@media (max-width: 640px) {
+    .iti__dropdown-content {
+        min-width: 90vw !important;
+        max-width: 95vw !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    
+    .iti__country-list {
+        min-width: 85vw !important;
+        max-width: 90vw !important;
+    }
+    
+    .iti__country {
+        min-width: auto !important;
+        padding: 0.75rem 1rem !important;
+    }
+    
+    .iti__country-name {
+        min-width: 150px !important;
+    }
+}
+
+/* ============================================
+   SPECIAL FIX UNTUK DROPDOWN YANG TERLALU KECIL
+   ============================================ */
+
+/* Force wider dropdown */
+.iti__dropdown-content.country-dropdown {
+    width: 400px !important;
+}
+
+/* Jika masih kecil, gunakan ini */
+.iti * {
+    box-sizing: border-box !important;
+}
+
+/* Pastikan container cukup lebar */
+.iti .iti__dropdown-content {
+    position: absolute !important;
+    z-index: 9999 !important;
+}
+
+/* ============================================
+   ALTERNATIVE FIX - Jika masih kecil
+   ============================================ */
+
+/* Option 2: Gunakan fixed width */
+.iti__country-list {
+    width: 400px !important;
+}
+
+/* Option 3: Gunakan viewport width */
+.iti__dropdown-content.country-list {
+    width: min(400px, 90vw) !important;
+}
+
+/* Untuk flag yang terpotong */
+.iti__flag {
+    transform: scale(1.2) !important;
+    margin-right: 12px !important;
+}
+
+/* Negara yang panjang namanya */
+.iti__country[data-country-code="united-kingdom"],
+.iti__country[data-country-code="united-states"] {
+    min-width: 350px !important;
+}
+
+/* ============================================
+   FIX POSITION UNTUK DROPDOWN
+   ============================================ */
+
+/* Dropdown muncul di posisi yang benar */
+.iti--container {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    z-index: 10000;
+}
+
+/* Untuk dropdown ke atas (jika tidak muat ke bawah) */
+.iti--container.iti--with-dropdown {
+    top: auto;
+    bottom: calc(100% + 5px);
+}
+
+/* ============================================
+   LIGHT MODE FIX
+   ============================================ */
+
+.light-mode .iti__country-list {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+.light-mode .iti__search-input {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #333 !important;
+}

@@ -1,0 +1,333 @@
+:root {
+    --bg-dark: #0A0A0A;
+    --bg-gradient-start: #2A1617;
+    --bg-gradient-end: #7A4B47;
+    --text: #FFFFFF;
+    --text-secondary: #F4F4F4;
+    --card-bg: rgba(26, 20, 26, 0.8);
+    --border: rgba(179, 44, 26, 0.2);
+    --primary: #FE7F42;
+    --primary-dark: #B32C1A;
+    --accent: #FFF897;
+    --accent-dark: #8E5915;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+}
+
+.light-mode {
+    --bg-dark: #F8FAFC;
+    --bg-gradient-start: #FFF897;
+    --bg-gradient-end: #FE7F42;
+    --text: #1A141A;
+    --text-secondary: #423738;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border: rgba(254, 127, 66, 0.2);
+    --primary: #B32C1A;
+    --primary-dark: #7A4B47;
+    --accent: #2A1617;
+    --accent-dark: #423738;
+}
+
+/* ================================
+   BACKGROUND GRADIENT ANIMASI
+   ================================ */
+body {
+    background: linear-gradient(-45deg, 
+        var(--bg-gradient-start), 
+        var(--bg-gradient-end),
+        #B32C1A,
+        var(--bg-gradient-start));
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card dengan warna baru */
+.glass-card {
+    background: linear-gradient(135deg, 
+        rgba(42, 22, 23, 0.7), 
+        rgba(122, 75, 71, 0.5));
+    border: 1px solid rgba(254, 127, 66, 0.15);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(179, 44, 26, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(254, 127, 66, 0.3);
+    box-shadow: 0 25px 50px rgba(179, 44, 26, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Input fields dengan warna baru */
+.input-field {
+    width: 100%;
+    background: rgba(26, 20, 26, 0.6);
+    border: 1px solid rgba(254, 127, 66, 0.1);
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #FE7F42;
+    box-shadow: 0 0 0 3px rgba(254, 127, 66, 0.1);
+    background: rgba(26, 20, 26, 0.8);
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Tombol dengan gradien On Fire */
+button.bg-blue-600,
+.btn-next,
+button[type="submit"] {
+    background: linear-gradient(135deg, #FE7F42 0%, #B32C1A 100%);
+    color: white;
+    font-weight: 800;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button.bg-blue-600:hover,
+.btn-next:hover,
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #FF8F52 0%, #C33C2A 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(254, 127, 66, 0.3);
+}
+
+button.bg-blue-600:active,
+.btn-next:active,
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Efek kilat pada tombol */
+button.bg-blue-600::after,
+.btn-next::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    transform: rotate(30deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+button.bg-blue-600:hover::after,
+.btn-next:hover::after {
+    animation: shimmer 0.8s forwards;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: rotate(30deg) translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(30deg) translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Progress Bar dengan warna baru */
+#p-1, #p-2, #p-3 {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#p-1.active, #p-2.active, #p-3.active {
+    background: linear-gradient(90deg, #FE7F42, #FFF897);
+    box-shadow: 0 0 15px rgba(254, 127, 66, 0.4);
+}
+
+/* Title dengan gradien */
+h1.text-6xl span.text-blue-600,
+h1.text-4xl span.text-blue-500 {
+    background: linear-gradient(135deg, #FE7F42, #FFF897);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+/* Border dengan gradien */
+.border-glow {
+    border: 2px solid transparent;
+    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                linear-gradient(135deg, #FE7F42, #FFF897) border-box;
+}
+
+/* Animasi warna untuk status */
+.status-pending {
+    background: linear-gradient(135deg, rgba(254, 127, 66, 0.1), rgba(179, 44, 26, 0.1));
+    color: #FE7F42;
+    border: 1px solid rgba(254, 127, 66, 0.2);
+}
+
+.status-selesai {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1));
+    color: #22C55E;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+/* Custom scrollbar dengan warna tema */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(42, 22, 23, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FE7F42, #B32C1A);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #FF8F52, #C33C2A);
+}
+
+/* Selection color */
+::selection {
+    background-color: rgba(254, 127, 66, 0.5);
+    color: white;
+}
+
+/* Logo/Title dengan efek api */
+#txt-title {
+    position: relative;
+    text-shadow: 0 0 30px rgba(254, 127, 66, 0.5);
+}
+
+#txt-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #FE7F42, transparent);
+    border-radius: 2px;
+}
+
+/* File upload area */
+.border-2.border-dashed {
+    border-color: rgba(254, 127, 66, 0.3) !important;
+    background: rgba(26, 20, 26, 0.3);
+    transition: all 0.3s ease;
+}
+
+.border-2.border-dashed:hover {
+    border-color: #FE7F42 !important;
+    background: rgba(254, 127, 66, 0.05);
+}
+
+/* Dashboard cards */
+.glass-card .bg-blue-500\/20 {
+    background: rgba(254, 127, 66, 0.2) !important;
+}
+
+.glass-card .text-blue-500 {
+    color: #FE7F42 !important;
+}
+
+.glass-card .bg-orange-500\/20 {
+    background: rgba(255, 248, 151, 0.2) !important;
+}
+
+.glass-card .text-orange-500 {
+    color: #FFF897 !important;
+}
+
+.glass-card .bg-green-500\/20 {
+    background: rgba(179, 44, 26, 0.2) !important;
+}
+
+.glass-card .text-green-400 {
+    color: #B32C1A !important;
+}
+
+/* Modal backdrop */
+#imageModal {
+    background: rgba(42, 22, 23, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Loading animation */
+@keyframes firePulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(254, 127, 66, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(254, 127, 66, 0.8);
+    }
+}
+
+.loading {
+    animation: firePulse 2s infinite;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        background-size: 200% 200%;
+        animation: gradientFlow 20s ease infinite;
+    }
+    
+    .glass-card {
+        border-radius: 24px;
+        padding: 1.5rem;
+    }
+}
+
+/* Animasi masuk untuk elemen */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-content.active,
+#form-container.active {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+

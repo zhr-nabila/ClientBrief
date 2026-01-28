@@ -1,0 +1,231 @@
+/* ===============================
+   ROOT THEME
+   =============================== */
+:root {
+    --bg: #050810;
+    --text: white;
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+.light-mode {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --card: rgba(255, 255, 255, 0.8);
+    --border: rgba(0, 0, 0, 0.05);
+}
+
+/* ===============================
+   BASE
+   =============================== */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: 0.4s;
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(15px);
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at top right, #1e293b, var(--bg));
+}
+
+/* ===============================
+   STEP VISIBILITY
+   =============================== */
+.step-content,
+#form-container {
+    display: none;
+}
+
+.active {
+    display: block !important;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===============================
+   ANIMATIONS
+   =============================== */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-6px); }
+}
+
+.error-shake {
+    animation: shake 0.3s ease-in-out;
+    border-color: #ef4444 !important;
+}
+
+/* ===============================
+   INPUT FIELD (GLOBAL)
+   =============================== */
+.input-field {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: var(--text);
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #2563eb !important;
+}
+
+.input-field:not(:placeholder-shown) {
+    background: rgba(120,120,120,0.1);
+}
+
+/* autofill fix */
+.input-field:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--card) inset;
+    -webkit-text-fill-color: var(--text);
+}
+
+/* ===============================
+   STEP 2 — PILIH LAYANAN
+   (SESUIAI INDEX)
+   =============================== */
+#in-jasa {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+
+    padding: 1rem 3rem 1rem 1.2rem;
+    color: var(--text);
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+    backdrop-filter: blur(12px);
+}
+
+#in-jasa:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+#in-jasa:focus {
+    outline: none;
+    border-color: #2563eb !important;
+}
+
+#in-jasa option {
+    background: var(--bg);
+    color: var(--text);
+    padding: 14px;
+    font-weight: 500;
+}
+
+#in-jasa option[disabled] {
+    color: rgba(255,255,255,0.4);
+}
+
+/* light mode option */
+.light-mode #in-jasa option {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+/* chevron icon */
+#step-2 .lucide-chevron-down {
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+#in-jasa:focus + .lucide-chevron-down {
+    color: #2563eb;
+    opacity: 1;
+}
+
+/* ===============================
+   INTL TEL INPUT (NEGARA)
+   =============================== */
+.iti {
+    width: 100%;
+}
+
+.iti__dropdown-content {
+    width: 380px !important;
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 18px !important;
+    backdrop-filter: blur(25px);
+    padding: 14px !important;
+    margin-top: 8px !important;
+    z-index: 99999 !important;
+}
+
+.iti__search-input {
+    width: 100% !important;
+    padding: 14px 18px !important;
+    border-radius: 14px !important;
+    border: 1px solid var(--border) !important;
+    background: rgba(255,255,255,0.08) !important;
+    color: var(--text) !important;
+    margin-bottom: 14px !important;
+}
+
+.iti__country {
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px;
+}
+
+.iti__country-name {
+    flex: 1;
+    font-size: 15px;
+}
+
+.iti__dial-code {
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.iti__country.iti__highlight {
+    background: linear-gradient(135deg,#2563eb,#1d4ed8) !important;
+    color: white !important;
+}
+
+/* ===============================
+   SCROLLBAR HIDE
+   =============================== */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    scrollbar-width: none;
+}
+
+/* ===============================
+   FILE UPLOAD
+   =============================== */
+input[type="file"] {
+    cursor: pointer;
+}

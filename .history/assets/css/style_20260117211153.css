@@ -1,0 +1,115 @@
+:root {
+    --bg: #0a0a0f;
+    --accent: #ff6b9d;
+    --accent2: #a463f2;
+    --accent3: #5ecfff;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(-45deg, #0a0a0f, #1a0f2e, #0f172a, #1a102e);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* hide scrollbar */
+html {
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(255, 107, 157, 0.1);
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: #fff;
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* light mode */
+body.light-theme {
+    background: linear-gradient(-45deg, #f8f4ff, #ffeef8, #f0f4ff, #f4f0ff);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+    --glass: rgba(255, 255, 255, 0.8);
+    --border: rgba(255, 107, 157, 0.2);
+    color: #1a0f2e;
+}
+
+body.light-theme input,
+body.light-theme textarea,
+body.light-theme select {
+    background: rgba(255, 107, 157, 0.05);
+    color: #1a0f2e;
+}
+
+body.light-theme .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.15);
+}
+
+.switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
