@@ -126,3 +126,145 @@ function closePreview() {
   modal.classList.add("hidden");
 }
 
+function showDetail(text) {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm';
+    modal.innerHTML = `
+        <div class="bg-[#1A141A] border border-[#B32C1A]/30 rounded-2xl max-w-2xl w-full p-8 animate-slideUp">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-black text-white">Detail Kebutuhan</h3>
+                <button onclick="this.closest('.fixed').remove()" class="p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <i data-lucide="x" class="w-5 h-5 text-gray-400"></i>
+                </button>
+            </div>
+            <div class="bg-[#2A1617]/60 p-6 rounded-xl border border-[#B32C1A]/20">
+                <p class="text-gray-300 whitespace-pre-line leading-relaxed">${text}</p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button onclick="this.closest('.fixed').remove()" class="px-6 py-2 bg-[#FE7F42] text-white rounded-xl font-bold hover:bg-[#B32C1A] transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    lucide.createIcons();
+}
+
+function confirmDelete(id, nama) {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm';
+    
+    modal.innerHTML = `
+        <div class="bg-[#1A141A] border border-[#B32C1A]/30 rounded-2xl max-w-md w-full p-8 animate-slideUp">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center">
+                    <i data-lucide="alert-triangle" class="w-6 h-6 text-red-500"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-black text-white">Hapus Brief?</h3>
+                    <p class="text-gray-400 text-sm">Konfirmasi penghapusan data</p>
+                </div>
+            </div>
+            
+            <div class="bg-[#2A1617]/60 p-4 rounded-xl border border-[#B32C1A]/20 mb-6">
+                <div class="flex items-center gap-3 mb-2">
+                    <i data-lucide="user" class="w-4 h-4 text-blue-500"></i>
+                    <span class="text-gray-300">${nama}</span>
+                </div>
+                <p class="text-gray-500 text-sm">Data yang dihapus tidak dapat dikembalikan</p>
+            </div>
+            
+            <div class="flex gap-3 justify-end">
+                <button onclick="this.closest('.fixed').remove()" 
+                        class="px-6 py-3 bg-white/5 text-gray-400 rounded-xl font-bold hover:bg-white/10 transition-colors flex items-center gap-2">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                    Batal
+                </button>
+                <button onclick="executeDelete(${id}, '${nama.replace(/'/g, "\\'")}')" 
+                        class="px-6 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors flex items-center gap-2">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    Hapus
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    lucide.createIcons();
+}
+
+function executeDelete(id, nama) {
+    const modal = document.querySelector('.fixed.z-\\[9999\\]');
+    if (modal) {
+        modal.innerHTML = `
+            <div class="bg-[#1A141A] border border-[#B32C1A]/30 rounded-2xl max-w-md w-full p-8 animate-slideUp">
+                <div class="flex flex-col items-center justify-center py-8">
+                    <i data-lucide="loader" class="w-12 h-12 text-blue-500 animate-spin mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Menghapus Data</h3>
+                    <p class="text-gray-400 text-center">Sedang menghapus brief dari ${nama}</p>
+                </div>
+            </div>
+        `;
+        lucide.createIcons();
+    }
+    
+    fetch(`hapus_projek.php?id=${id}`)
+        .then(response => response.text())
+        .then(data => {
+            if (modal) modal.remove();
+            
+            showNotification('Data berhasil dihapus!', 'success');
+            
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        })
+        .catch(error => {
+            if (modal) modal.remove();
+            showNotification('Gagal menghapus data!', 'error');
+            console.error('Error:', error);
+        });
+}
+
+function showNotification(message, type = 'info') {
+    const types = {
+        success: { bg: 'bg-green-600', icon: 'check-circle' },
+        error: { bg: 'bg-red-600', icon: 'alert-circle' },
+        info: { bg: 'bg-blue-600', icon: 'info' }
+    };
+    
+    const config = types[type] || types.info;
+    
+    const toast = document.createElement('div');
+    toast.className = `fixed top-6 right-6 ${config.bg} text-white px-6 py-4 rounded-xl shadow-2xl z-[10000] animate-slideUp`;
+    toast.innerHTML = `
+        <div class="flex items-center gap-3">
+            <i data-lucide="${config.icon}" class="w-5 h-5"></i>
+            <span class="font-medium">${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    lucide.createIcons();
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modals = document.querySelectorAll('.fixed.z-\\[9999\\]');
+        if (modals.length > 0) {
+            modals[modals.length - 1].remove();
+        }
+    }
+});
+
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('fixed') && 
+        e.target.classList.contains('z-[9999]')) {
+        e.target.remove();
+    }
+});

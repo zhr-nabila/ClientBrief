@@ -457,7 +457,6 @@ input[type="email"].input-field:-webkit-autofill:active {
     caret-color: #2A1617 !important;
 }
 
-/* Tambahkan animasi untuk modal */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -473,7 +472,6 @@ input[type="email"].input-field:-webkit-autofill:active {
     animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* File upload styles */
 #fileList .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -493,4 +491,79 @@ input[type="email"].input-field:-webkit-autofill:active {
 .modal-scroll::-webkit-scrollbar-thumb {
     background: rgba(254, 127, 66, 0.5);
     border-radius: 3px;
+}
+
+/* Animasi untuk popup dan toast */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-slideUp {
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.modal-backdrop {
+    backdrop-filter: blur(8px);
+}
+
+.toast-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.toast-error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.toast-info {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.modal-btn-cancel {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(254, 127, 66, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.modal-btn-cancel:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(254, 127, 66, 0.3);
+}
+
+.modal-btn-confirm {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.modal-btn-confirm:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
 }

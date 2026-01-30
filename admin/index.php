@@ -173,11 +173,11 @@ $selesai      = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM tb_projek
                                                 </button>
                                             <?php endif; ?>
 
-                                            <a href="hapus_projek.php?id=<?= $row['id'] ?>"
-                                                onclick="return confirm('Hapus brief dari <?= htmlspecialchars($row['nama_klien']) ?>?')"
-                                                class="p-3 bg-white/5 rounded-xl hover:bg-red-600 transition-all text-red-500 hover:text-white" title="Hapus">
+                                            <button onclick="confirmDelete(<?= $row['id'] ?>, '<?= addslashes($row['nama_klien']) ?>')"
+                                                class="p-3 bg-white/5 rounded-xl hover:bg-red-600 transition-all text-red-500 hover:text-white"
+                                                title="Hapus">
                                                 <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                            </a>
+                                            </button>
 
                                             <a href="edit_projek.php?id=<?= $row['id'] ?>" class="p-3 bg-white/5 rounded-xl hover:bg-white/20 transition-all" title="Edit Status">
                                                 <i data-lucide="edit-3" class="w-4 h-4"></i>

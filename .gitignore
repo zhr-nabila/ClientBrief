@@ -2,5 +2,6 @@
 .vscode/
 .history/
 node_modules/
-Uploads/
+Uploads/*
+!Uploads/.gitkeep
 *.log
